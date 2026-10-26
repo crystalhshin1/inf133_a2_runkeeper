@@ -56,7 +56,7 @@ function parseTweets(runkeeper_tweets) {
             tooltip: [{field: 'activity'}, {field: 'day'}, {field: 'distance', aggregate: 'mean', format: '.2f'}]}
     }, {actions: false});
 
-    // Show the activity with the greatest/least average distance of the top three.
+    // showing the activity with the greatest/least average distance of the top three.
     const averages = topThree.map(activity => {
         const entries = distances.filter(d => d.activity === activity);
         return {activity, mean: entries.length ? entries.reduce((sum, d) => sum + d.distance, 0) / entries.length : 0};

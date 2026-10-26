@@ -17,7 +17,6 @@ class Tweet {
 
     get writtenText(): string {
         if (this.source !== 'completed_event') return '';
-        // A dash after the auto-generated workout information indicates a user annotation.
         const base = this.text.replace(/https?:\/\/\S+/gi, '')
             .replace(/#runkeeper\b/gi, '').trim();
         const dash = base.indexOf(' - ');
@@ -52,7 +51,7 @@ class Tweet {
     }
 
     getHTMLTableRow(rowNumber: number): string {
-        // Escape text before adding it to HTML, then linkify any activity URLs.
+        // escape the text before adding it to html, then linkify any activity urls
         const escaped = this.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         const linked = escaped.replace(/https?:\/\/[^\s]+/g, (url) =>
